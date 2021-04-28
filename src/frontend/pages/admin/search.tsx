@@ -8,7 +8,7 @@ export default function Search() {
     <Layout>
       <Menu />
       <ProfileComponent />
-      <SearchComponent />
+        <SearchComponent />
     </Layout>
   )
 }

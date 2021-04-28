@@ -5,7 +5,7 @@ import { ButtonCloseModal, ModalContainer } from './styled'
 
 export default function Modal({
   content,
-  title,
+  title
 }: any) {
 
   const { setOpenModal, OpenModal } = useContext(ModalContext)

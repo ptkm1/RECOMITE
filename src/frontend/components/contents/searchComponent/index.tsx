@@ -8,10 +8,11 @@ import Modal from '../../elements/modal'
 import Select from '../../elements/selects'
 import { FormContainer, FormSeparatorColumn } from '../../others/forms/styled'
 import RenderModalComponents from './renderModalComponents'
+import React from 'react'
 
 export default function SearchComponent() {
 
-  const { OpenModal, setOpenModal, Content, setContent } = useContext(ModalContext)
+  const { OpenModal, setOpenModal } = useContext(ModalContext)
 
   const [Status, setStatus]: any = useState()
   const [Nome, setNome]: any = useState()
@@ -38,9 +39,12 @@ export default function SearchComponent() {
     }
   ]
 
+  const content = RenderModalComponents()
+  console.log(content)
+
   return (
     <FormContainer>
-      { OpenModal && <Modal title="Titulo teste" content={Content}  />}
+      { OpenModal && <Modal title="Titulo teste" content={content.data} dataHead={content.head}  />   }
       <FormSeparatorColumn>
 
         <h1> Pesquisar Cidadão <BiUser /></h1>
@@ -51,6 +55,7 @@ export default function SearchComponent() {
         <Input fieldWidth="100%" value={LoginSolicitante} onChange={setLoginSolicitante} placeholder="Insira o usuario solicitante" type="text" label="LOGIN SOLICITANTE" />
 
         <Select labelMargin="0px 0px 15px 0px" SelectWidth="105%" SelectData={selectDATA} value={Status} onChange={setStatus} label="Status" />
+        
         <Select labelMargin="0px 0px 15px 0px" SelectWidth="105%" SelectData={selectDATA} value={Resolvido} onChange={setResolvido} label="Resolvido" />
 
       </FormSeparatorColumn>
@@ -64,14 +69,16 @@ export default function SearchComponent() {
         <Input fieldWidth="100%" value={DataDeSolicFinal} onChange={setDataDeSolicFinal} placeholder="Insira algo" type="text" label="DATA DE AGENDAMENTO FINAL" />
 
         <Input fieldWidth="100%" value={DataDeSolicInicial} onChange={setDataDeSolicInicial} placeholder="Insira o nome completo" type="date" label="DATA DE AGENDAMENTO INICIAL" />
+
         <Input fieldWidth="100%" value={DataDeSolicFinal} onChange={setDataDeSolicFinal} placeholder="Insira algo" type="date" label="DATA DE AGENDAMENTO FINAL" />
+
       </FormSeparatorColumn>
       <Button title="Procurar" />
       <ButtonContainer onClick={ (e:FormEvent)=> {
         e.preventDefault()
         setOpenModal(!OpenModal)
-      }}>
-        Procurar
+      } }>
+        Abrir Modal
       </ButtonContainer>
     </FormContainer>
   )

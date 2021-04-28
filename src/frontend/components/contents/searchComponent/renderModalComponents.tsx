@@ -1,8 +1,11 @@
-
-import Table from '../../elements/table'
 import { TableRow, TableBody } from '../../elements/table/styled'
+import { useContext } from 'react'
+import {ModalContext} from '../../../../infra/data/modalTransfer'
+
 
 export default function RenderModalComponents() {
+
+  const { setContent } = useContext(ModalContext)
 
   const head = [
     { title: 'DATA' },
@@ -66,6 +69,5 @@ export default function RenderModalComponents() {
       
     </TableRow>
 ))
-
-  return <Table dataHead={head} dataRows={rows} data={ data } />
+  return {data , head}
 }
